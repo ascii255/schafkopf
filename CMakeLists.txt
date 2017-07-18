@@ -15,5 +15,6 @@ add_library(schafkopf source/engine.cpp
     include/schafkopf/trick.h)
 target_include_directories(schafkopf PUBLIC include)
 set_target_properties(schafkopf PROPERTIES CXX_STANDARD 17)
+set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT schafkopf)
 
 add_subdirectory(test)
