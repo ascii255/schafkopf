@@ -1,12 +1,22 @@
-#define CATCH_CONFIG_MAIN
-#include "catch.hpp"
+#include <catch_with_main.hpp>
+#include <schafkopf/deck.h>
+#include <schafkopf/game.h>
 
-unsigned int Factorial(unsigned int number)
-{
-    return number<=1 ? number : Factorial(number-1)*number;
-}
+using namespace std;
 
-TEST_CASE("Factorials are computed", "[factorial]")
-{
-    REQUIRE(Factorial(1) == 1);
+SCENARIO("game can be initialized", "[game]") {
+    GIVEN("a freshly constructed game") {
+        schafkopf::game game{schafkopf::bierkopf_deck};
+
+        REQUIRE(size(game.players) == 4);
+        REQUIRE(size(game.cards) == 32);
+
+        WHEN("player is added") {
+            game.players.emplace_back(make_shared<schafkopf::player>());
+
+            THEN("size of player container is increased") {
+                REQUIRE(size(game.players) == 5);
+            }
+        }
+    }
 }
