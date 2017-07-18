@@ -7,6 +7,7 @@
 #include <array>
 #include <numeric>
 #include <random>
+#include <memory>
 #include <schafkopf/player.h>
 #include <schafkopf/deck.h>
 #include <schafkopf/card.h>
