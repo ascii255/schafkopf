@@ -6,52 +6,59 @@
 
 #pragma once
 
-namespace schafkopf
-{
-	enum struct color
-	{
-		bell,
-		heart,
-		leave,
-		acorn,
-	};
+#include <map>
 
-	enum struct value
-	{
-		seven = 0,
-		eight = 0,
-		nine = 0,
-		jack = 2,
-		knight = 3,
-		king = 4,
-		ten = 10,
-		ace = 11,
-	};
+namespace schafkopf {
+using namespace std;
 
-	struct card
-	{
-		schafkopf::color color;
-		schafkopf::value value;
+enum struct color {
+  bell,
+  heart,
+  leave,
+  acorn,
+};
 
-		operator int() const
-		{
-			return static_cast<int>(value);
-		}
+enum struct value {
+  seven,
+  eight,
+  nine,
+  jack,
+  knight,
+  king,
+  ten,
+  ace,
+};
 
-		int operator+(const card& other_card) const
-		{
-			return static_cast<int>(other_card) + static_cast<int>(*this);
-		}
+static const map<value, int> value_points{
+    {value::seven, 0},
+    {value::eight, 0},
+    {value::nine, 0},
+    {value::jack, 2},
+    {value::knight, 3},
+    {value::king, 4},
+    {value::ten, 10},
+    {value::ace, 11},
+};
 
-		bool operator==(const card& other_card) const
-		{
-			return color == other_card.color &&
-			       value == other_card.value;
-		}
+struct card {
+  schafkopf::color color;
+  schafkopf::value value;
 
-		bool operator!=(const card& other_card) const
-		{
-			return !(other_card == *this);
-		}
-	};
+  operator int() const {
+    return value_points.at(value);
+  }
+
+  int operator+(const card &other_card) const {
+    return static_cast<int>(other_card) + static_cast<int>(*this);
+  }
+
+  bool operator==(const card &other_card) const {
+    return color == other_card.color &&
+        value == other_card.value;
+  }
+
+  bool operator!=(const card &other_card) const {
+    return !(other_card == *this);
+  }
+};
 }

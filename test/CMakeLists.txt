@@ -1,12 +1,13 @@
 cmake_minimum_required(VERSION 3.8)
 
-# Prevent overriding the parent project's compiler/linker
-# settings on Windows
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+set(CATCH_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Catch/include)
+file(GLOB_RECURSE CATCH_SOURCES ${CATCH_INCLUDE_DIR}/*.h*)
+source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${CATCH_SOURCES})
 
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/googletest/googletest EXCLUDE_FROM_ALL)
-enable_testing()
+add_library(catch INTERFACE)
+target_include_directories(catch INTERFACE ${CATCH_INCLUDE_DIR})
+target_sources(catch INTERFACE ${CATCH_SOURCES})
 
-add_executable(runUnitTests source/engine_test.cpp)
-target_link_libraries(runUnitTests schafkopf gtest_main)
+add_executable(runUnitTests source/game_test.cpp)
+target_link_libraries(runUnitTests schafkopf catch)
 set_target_properties(runUnitTests PROPERTIES CXX_STANDARD 17)

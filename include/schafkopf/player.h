@@ -5,12 +5,18 @@
 #pragma once
 
 #include <vector>
+#include <schafkopf/card.h>
 
-namespace schafkopf
-{
-	class player
-	{
-	public:
-		std::vector<int> card{};
-	};
+namespace schafkopf {
+using namespace std;
+
+class player {
+public:
+    vector<unique_ptr<schafkopf::card>> cards{};
+
+    void reset()
+    {
+        cards.clear();
+    }
+};
 }

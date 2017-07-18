@@ -2,7 +2,16 @@
 // Created by Thomas on 18.07.2017.
 //
 
-#ifndef SCHAFKOPF_PLAY_H
-#define SCHAFKOPF_PLAY_H
+#pragma once
 
-#endif //SCHAFKOPF_PLAY_H
+#include <schafkopf/player.h>
+#include <schafkopf/card.h>
+
+namespace schafkopf {
+using namespace std;
+
+struct play {
+    schafkopf::player& player;
+    unique_ptr<schafkopf::card> card;
+};
+}
