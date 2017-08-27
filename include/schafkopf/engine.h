@@ -13,12 +13,13 @@
 #include <schafkopf/card.h>
 
 namespace schafkopf {
+
 using namespace std;
 
 class engine {
- public:
-  vector<shared_ptr<player>> player;
-  mt19937 generator{random_device{}()};
+public:
+		vector<shared_ptr<player>> player;
+		mt19937 generator{random_device{}()};
 
 //		void start()
 //		{
@@ -61,4 +62,5 @@ class engine {
 //			for (auto& player : player) player.reset();
 //		}
 };
+
 }

@@ -8,6 +8,6 @@ add_library(catch INTERFACE)
 target_include_directories(catch INTERFACE ${CATCH_INCLUDE_DIR})
 target_sources(catch INTERFACE ${CATCH_SOURCES})
 
-add_executable(runUnitTests source/game_test.cpp source/other_test.cpp)
+add_executable(runUnitTests source/game_test.cpp)
 target_link_libraries(runUnitTests schafkopf catch)
 set_target_properties(runUnitTests PROPERTIES CXX_STANDARD 17)

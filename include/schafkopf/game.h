@@ -12,6 +12,7 @@
 #include <random>
 
 namespace schafkopf {
+
 using namespace std;
 
 class game {
@@ -46,5 +47,11 @@ public:
         player->cards.erase(card_of_player);
         return move(result);
     }
+
+    void add_player()
+    {
+        players.emplace_back(make_shared<schafkopf::player>());
+    }
 };
+
 }

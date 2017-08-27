@@ -8,11 +8,14 @@
 #include <schafkopf/deck.h>
 
 namespace schafkopf {
+
 using namespace std;
 
 template<typename T>
-int rank(const T &deck, const card &card) {
-  const auto match = find(begin(deck), end(deck), card);
-  return static_cast<int>(distance(begin(deck), match));
+int rank(const T& deck, const card& card)
+{
+	const auto match = find(begin(deck), end(deck), card);
+	return static_cast<int>(distance(begin(deck), match));
 }
+
 }
